@@ -1,12 +1,13 @@
 package org.alexdev.havana.server.netty;
 
 import io.netty.channel.Channel;
-import org.alexdev.havana.Havana;
-import org.alexdev.havana.dao.mysql.PlayerDao;
-import org.alexdev.havana.game.player.PlayerManager;
-import org.alexdev.havana.util.StringUtil;
-import org.alexdev.havana.util.config.ServerConfiguration;
+import org.alexdev.havana.game.encryption.Cryptography;
+import org.alexdev.havana.server.netty.codec.EncryptionDecoder;
 import org.apache.commons.validator.routines.InetAddressValidator;
+
+import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NettyPlayerNetwork {
     private Channel channel;
@@ -14,10 +15,78 @@ public class NettyPlayerNetwork {
 
     private boolean saveMachineId;
     private String clientMachineId;
+    private String pToken;
+    private int pTx;
+    private int pRx;
 
     public NettyPlayerNetwork(Channel channel, int connectionId) {
         this.channel = channel;
         this.connectionId = connectionId;
+    }
+
+    public static String removePadding(String tBody, int i) {
+        if (i >= tBody.length())
+            return tBody;
+
+        return tBody.substring(i);
+    }
+
+    public void setToken(String tToken) {
+        this.pToken = tToken;
+        String tSeedHex = pToken.substring(pToken.length() - 4);
+        this.pTx = 0;
+        Map<String, Integer> tVals = new HashMap<>();
+        tVals.put("0", 0);
+        tVals.put("1", 1);
+        tVals.put("2", 2);
+        tVals.put("3", 3);
+        tVals.put("4", 4);
+        tVals.put("5", 5);
+        tVals.put("6", 6);
+        tVals.put("7", 7);
+        tVals.put("8", 8);
+        tVals.put("9", 9);
+        tVals.put("a", 10);
+        tVals.put("b", 11);
+        tVals.put("c", 12);
+        tVals.put("d", 13);
+        tVals.put("e", 14);
+        tVals.put("f", 15);
+        tVals.put("A", 10);
+        tVals.put("B", 11);
+        tVals.put("C", 12);
+        tVals.put("D", 13);
+        tVals.put("E", 14);
+        tVals.put("F", 15);
+        for (int i = 0; i <= 3; i++) {
+            pTx += (int)(Math.pow(16, i) * tVals.get(Character.toString(tSeedHex.charAt(3 - i))));
+        }
+        this.pRx = 0;
+        tSeedHex = pToken.substring(0, 4);
+
+        for (int i = 0; i <= 3; i++) {
+            this.pRx += (int)(Math.pow(16, i) * tVals.get(Character.toString(tSeedHex.charAt(3 - i))));
+        }
+    }
+
+    public static int iterateRandom(int tSeed) {
+     return ((19979 * tSeed) + 5) % 65536;
+    }
+
+    public int getTx() {
+        return pTx;
+    }
+
+    public int getRx() {
+        return pRx;
+    }
+
+    public void setTx(int pTx) {
+        this.pTx = pTx;
+    }
+
+    public void setRx(int pRx) {
+        this.pRx = pRx;
     }
 
     public Channel getChannel() {
@@ -73,4 +142,12 @@ public class NettyPlayerNetwork {
         this.saveMachineId = saveMachineId;
     }
 
+    public void registerHandler(ServerHandlerType type, Object object) {
+        if (type == ServerHandlerType.RC4) {
+            if (object instanceof BigInteger) {
+                this.channel.pipeline().addBefore("gameDecoder", "gameCrypto", new EncryptionDecoder((BigInteger) object));
+                this.channel.pipeline().remove("gameDecoder");
+            }
+        }
+    }
 }
