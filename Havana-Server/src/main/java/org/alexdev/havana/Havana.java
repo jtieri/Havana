@@ -100,11 +100,6 @@ public class Havana {
                 return;
             }
 
-            NettyPlayerNetwork c = new NettyPlayerNetwork(null, 0);
-            c.setToken("65602183985613826120946103332662");
-
-            EncryptionTest(c);
-
             // Update players online back to 0
             SettingsDao.updateSetting("players.online", "0");
 
@@ -172,83 +167,6 @@ public class Havana {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private static void EncryptionTest(NettyPlayerNetwork c) {
-        var bigInteer = new BigInteger("24608602965125741349820450175553983127369458959744575225672967737182167903038107964568822983698711007220209902861410");
-
-        System.out.println(Arrays.toString(HugeInt15.getByteArray(bigInteer)));
-        /*int[] sharedKey = new int[] { 142, 152, 200, 23, 9, 115, 248, 22, 5, 143, 86, 126, 205, 85, 247, 107, 76, 159, 168, 183, 71, 196, 153, 75, 213, 125, 8, 76, 200, 123, 72, 125, 131, 96, 132, 218, 48, 201, 190, 147, 30, 138, 47, 238, 31, 13, 32, 104 };
-        var pDecoder = new Cryptography(sharedKey);
-
-        var pHeaderDecoder = new Cryptography(sharedKey);
-
-        String tContent = "3oDraAn/hxtHIDLhd4s+9uIpq9znHp0woqts43qrv+bqjnxbi7JRd6Lb/e+QOe5EPQHYdk+VZZVu2SV/4Nwca1jsm5H1/Bp7eR6mz25Wldh+ezHDCSdKlt";//new String(decodeBytes, StringUtil.getCharset());
-        String pLastContent = "";
-        String tBody = "";
-
-        int tOffset = 0;
-        int pMsgOffset = 0;
-        int pMsgSize = 0;
-
-        System.out.println("tContent: " + tContent);
-
-        //while (tOffset < tContent.length()) {
-            if (pLastContent.length() == 0) {
-                //player.getNetwork().setRx(NettyPlayerNetwork.iterateRandom(
-                //        player.getNetwork().getRx()
-                //));
-
-                pMsgOffset = 0;
-                String tHeader = tContent.substring(tOffset, tOffset + 6);
-                //System.out.println("pMsgSize " + pMsgSize + " / " + tHeader);
-
-                tHeader = pHeaderDecoder.kg4R6Jo5xjlqtFGs1klMrK4ZTzb3R(tHeader);
-
-                int tByte1 = ((int) tHeader.charAt(3)) & 63;
-                int tByte2 = ((int) tHeader.charAt(2)) & 63;
-                int tByte3 = ((int) tHeader.charAt(1)) & 63;
-                /*
-                System.out.println("tByte1 " + tByte1);
-                System.out.println("tByte2 " + tByte2);
-                System.out.println("tByte3 " + tByte3);
-
-                pMsgSize = (tByte2 * 64) | tByte1;
-                pMsgSize = (tByte3 * 64 * 64) | pMsgSize;
-
-
-                //System.out.println("pMsgSize " + pMsgSize + " / " + tHeader);
-
-
-                tBody = tContent.substring(tOffset + 6, tOffset + 6 + pMsgSize);
-                int tLength = tBody.length();
-                tOffset = tOffset + 6 + tLength;
-                pMsgOffset = pMsgOffset + tLength;
-                if (tLength < pMsgSize) {
-                    pLastContent = tBody;
-                    //buffer.resetReaderIndex();
-                    return;
-                }
-            } else {
-                tBody = tContent.substring(tOffset, tOffset + pMsgSize - pMsgOffset);
-                int tLength = tBody.length();
-                tOffset = tOffset + tLength;
-                pLastContent = pLastContent + tBody;
-                pMsgOffset = pMsgOffset + tLength;
-                if (pLastContent.length() < pMsgSize) {
-                    //buffer.resetReaderIndex();
-                    return;
-                }
-
-                tBody = pLastContent;
-                pLastContent = "";
-            }
-
-            //System.out.println("tBody " + tBody);
-            tBody = pDecoder.kg4R6Jo5xjlqtFGs1klMrK4ZTzb3R(tBody);
-
-            System.out.println(tBody);
-       // }*/
     }
 
     private static void setupServer() throws UnknownHostException {
