@@ -26,7 +26,7 @@ public class GENERATEKEY implements MessageEvent {
         //System.out.println("publicKey: " + publicKey);
         //System.out.println("adobeClientSharedKey: " + adobeClientSharedKey.getString());
 
-        System.out.println("sharedKey: " + player.getDiffieHellman().getSharedKey());
-        System.out.println("sharedKey byte array: " + Arrays.toString(HugeInt15.getByteArray(player.getDiffieHellman().getSharedKey())));
+        //System.out.println("sharedKey: " + player.getDiffieHellman().getSharedKey());
+        //System.out.println("sharedKey byte array: " + Arrays.toString(HugeInt15.getByteArray(player.getDiffieHellman().getSharedKey())));
     }
 }

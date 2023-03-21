@@ -17,9 +17,7 @@ public class INIT_CRYPTO implements MessageEvent {
             return;
         }
 
-        String pToken = "65602183985613826120946103332662";
-
-        // DiffieHellman.generateRandomNumString(32);
+        String pToken = DiffieHellman.generateRandomNumString(12);
 
         player.send(new CRYPTO_PARAMETERS(pToken));
         player.getNetwork().setToken(pToken);
