@@ -146,7 +146,7 @@ public class NettyPlayerNetwork {
         if (type == ServerHandlerType.RC4) {
             if (object instanceof BigInteger) {
                 this.channel.pipeline().addBefore("gameDecoder", "gameCrypto", new EncryptionDecoder((BigInteger) object));
-                this.channel.pipeline().remove("gameDecoder");
+                // this.channel.pipeline().remove("gameDecoder");
             }
         }
     }

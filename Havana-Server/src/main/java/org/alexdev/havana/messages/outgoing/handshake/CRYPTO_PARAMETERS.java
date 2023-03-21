@@ -14,7 +14,7 @@ public class CRYPTO_PARAMETERS extends MessageComposer {
     @Override
     public void compose(NettyResponse response) {
         response.writeString(this.token);
-        response.writeInt(0);
+        response.writeBool(false);
     }
 
     @Override

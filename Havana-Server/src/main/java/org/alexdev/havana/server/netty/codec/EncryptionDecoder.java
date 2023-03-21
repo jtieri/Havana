@@ -71,9 +71,11 @@ public class EncryptionDecoder extends ByteToMessageDecoder {
             tBody = NettyPlayerNetwork.removePadding(tBody, player.getNetwork().getTx() % 5);
 
             ByteBuf result = Unpooled.buffer();
+
+            result.writeBytes(Base64Encoding.encode(tBody.length(), 3));
             result.writeBytes(tBody.getBytes(StringUtil.getCharset()));
 
-            out.add(new NettyRequest(result));
+            out.add(result);
         }
     }
 }
