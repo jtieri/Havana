@@ -64,9 +64,6 @@ public class EncryptionDecoder extends ByteToMessageDecoder {
             buffer.readBytes(tBodyMsg);
 
             tBody = new String(tBodyMsg, StringUtil.getCharset());
-
-            System.out.println("ENCIPHERED -->  " + tBody);
-
             tBody = this.pDecoder.kg4R6Jo5xjlqtFGs1klMrK4ZTzb3R(tBody);
             tBody = NettyPlayerNetwork.removePadding(tBody, player.getNetwork().getTx() % 5);
 
