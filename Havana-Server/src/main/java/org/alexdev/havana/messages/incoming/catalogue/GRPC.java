@@ -24,13 +24,11 @@ import org.alexdev.havana.messages.outgoing.openinghours.INFO_HOTEL_CLOSING;
 import org.alexdev.havana.messages.outgoing.user.currencies.ActivityPointNotification;
 import org.alexdev.havana.messages.outgoing.user.currencies.CREDIT_BALANCE;
 import org.alexdev.havana.messages.types.MessageEvent;
-import org.alexdev.havana.server.netty.NettyPlayerNetwork;
 import org.alexdev.havana.server.netty.streams.NettyRequest;
 import org.alexdev.havana.server.util.MalformedPacketException;
 import org.alexdev.havana.util.DateUtil;
 import org.alexdev.havana.util.HexValidator;
 import org.alexdev.havana.util.StringUtil;
-import org.alexdev.havana.util.config.GameConfiguration;
 import org.apache.commons.lang3.StringUtils;
 
 import java.sql.SQLException;
@@ -64,7 +62,7 @@ public class GRPC implements MessageEvent {
             item = seasonalItem;
         } else {
             // If the item is not a buyable special rare, then check if they can actually buy it
-            if (!CollectablesManager.getInstance().isCollectable(item) || (RareManager.getInstance().getCurrentRare() != null && item != RareManager.getInstance().getCurrentRare())) {
+            if (!CollectablesManager.getInstance().isCollectable(item) && (RareManager.getInstance().getCurrentRare() != null && item != RareManager.getInstance().getCurrentRare())) {
                 CataloguePage page = CatalogueManager.getInstance().getCataloguePages().stream().filter(p -> finalItem.hasPage(p.getId())).findFirst().orElse(null);
 
                 if (page == null) {// || pageStream.get().getMinRole().getRankId() > player.getDetails().getRank().getRankId()) {
@@ -208,12 +206,16 @@ public class GRPC implements MessageEvent {
                 }
             }
 
+            // get players buy value
+            // attempt to do n number of buys
+            // if any buy fails return
             items = CatalogueManager.getInstance().purchase(player.getDetails(), item, extraData, null, DateUtil.getCurrentTimeSeconds());
 
             // Don't charge if nothing was given.
             var itemDefinition = item.getDefinition();
-            if (items.size() == 0 && !(itemDefinition != null && (itemDefinition.hasBehaviour(ItemBehaviour.EFFECT) || itemDefinition.getSprite().equals("film"))))
+            if (items.size() == 0 && !(itemDefinition != null && (itemDefinition.hasBehaviour(ItemBehaviour.EFFECT) || itemDefinition.getSprite().equals("film")))) {
                 return;
+            }
 
             boolean showItemDelivered = player.getRoomUser().getRoom() != null;
 
@@ -246,6 +248,7 @@ public class GRPC implements MessageEvent {
 
         if (transactionDscription != null) {
             boolean isCollectable = CollectablesManager.getInstance().isCollectable(item);
+            boolean isRare = RareManager.getInstance().getCurrentRare().getId() == item.getId();
 
             if (isCollectable) {
                 TransactionDao.createTransaction(player.getDetails().getId(),
@@ -253,7 +256,13 @@ public class GRPC implements MessageEvent {
                         item.getId() + "",
                         item.getAmount(),
                         "Collectible - " + transactionDscription, priceCoins, pricePixels, true);
-            } else {
+            } else if (isRare) {
+                TransactionDao.createTransaction(player.getDetails().getId(),
+                        items.stream().map(e -> String.valueOf(e.getDatabaseId())).collect(Collectors.joining(",")),
+                        item.getId() + "",
+                        item.getAmount(),
+                        "Rare - " + transactionDscription, priceCoins, pricePixels, true);
+            }else {
                 TransactionDao.createTransaction(player.getDetails().getId(),
                         items.stream().map(e -> String.valueOf(e.getDatabaseId())).collect(Collectors.joining(",")),
                         item.getId() + "",
