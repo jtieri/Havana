@@ -144,11 +144,12 @@ body { behavior: url({{ site.staticContentPath }}/web-gallery/js/csshover.htc); 
 							</div>
 						</div>
 						<p><b>How does it work?</b></p>
-						<p>The program is a simple .exe that sends a login request to our server and then loads the client. You'll need to edit the account.ini file with your login details.</p>
-						<p>The app regardless of download will work with WINE, which is a requirement to play on either macOS and Linux.</p>
+						<p>The program is a simple .exe that works as a light wrapper around the Shockwave client files.</p>
+						<p>The app will work natively on Windows but will require Wine or Wineskin Winery to play on Linux/macOS.</p>
+						<p>This method does not require any installs of Shockwave or an additional browser.</p>
 						<p><b>Why should I use Shockwave?</b></p>
-						<p>As of right now there are two clients to play the hotel on, the first is the Shockwave hotel and the second is Flash.</p>
-						<p>It is highly recommended to play the Shockwave version because it's filled with far more features that cannot be experienced on the Flash client.</p>
+						<p>Early versions of Habbo Hotel were built with Macromedia Shockwave and so it is required to load the client.</p>
+						<p>Perhaps one day we will have Ruffle-esque styled emulation for Shockwave but for now this is the best we have.</p>
 						<p><b>Pictures</b></p>
 						<p>Below are pictures of the program working in action.</p>
 						<div class="article-body">
@@ -188,39 +189,12 @@ body { behavior: url({{ site.staticContentPath }}/web-gallery/js/csshover.htc); 
 								<img src="https://i.imgur.com/yDbopCD.png" alt="">
 							</div>
 							<div class="text-column" style="width: 365px;">
-								<p>The program has existed since April 2019 and has had a lot of changes over the course. You may view them below.</p>
+								<p>The desktop client was created in early 2023. Changes to the client over time can be found below.</p>
 							</div>
 						</div>
 						<a class="new-button collapsible" id="warn-clear-hand-button" href="#"><b>Reveal Changelog</b><i></i></a>
 						<div class="collapsible-content" style="margin-top: 25px">
-						<p><b>Version 0.8</b></p>
-						<p>- Fixes for Cloudflare changing how requests are sent back.</p>
-						<br>
-						<p><b>Version 0.7</b></p>
-						<p>- Fixes for updating furniture.</p>
-						<br>
-						<p><b>Version 0.6</b></p>
-						<p>- Furniture is now stored and loaded from disk to decrease furniture load times.</p>
-						<p>- New furniture will be automatically downloaded when loaded so subsequent loading will be faster.</p>
-						<br>
-						<p><b>Version 0.5</b></p>
-						<br>
-						<p>- Added hotel view support which is an option that can be changed in your Account Settings.</p>
-						<p>- Added always on top feature.</p>
-						<p>- Added login in the client instead, an opt-in if you don't trust login details being stored on text.</p>
-						<br>
-						<p><b>Version 0.4</b></p>
-						<p>- Added patches for SnowStorm to become playable, without freezing.</p>
-						<br>
-						<p><b>Version 0.3</b></p>
-						<p>- Fix for working hyperlinks</p>
-						<p>- Fix for the reset tutorial button not properly sending request to server.</p>
-						<br>
-						<p><b>Version 0.2</b></p>
-						<p>- Fix for miscellaneous symbols not being allowed in passwords.</p>
-						<p>- Add joystick icon created by Copyright.</p>
-						<br>
-						<p><b>Version 0.1</b></p>
+						<p><b>v0.1.0 - March 2023</b></p>
 						<p>- Initial release.</p>
 						</div>
 						<!-- <p>The features that Shockwave contains which are not present in the Flash version are listed below.</p>
@@ -241,13 +215,13 @@ body { behavior: url({{ site.staticContentPath }}/web-gallery/js/csshover.htc); 
 				<div class="cbb clearfix">
 					<h2 class="title" style="background-color: gray">Downloads</h2>
 					<div class="tutorial-text">							</h2>
-						<p style="margin-top:10px; margin-right:10px">There are two versions to download. The standard download and the lite download.</p>
-						<p><b>Standard version:</b></p>
-						<p>The standard version contains all the furniture for instant loading. New furniture will be downloaded if the file doesn't exist.</p>
-						<p> - <a href="https://classichabbo.com/classichabbo_exe.zip">Click here</a> to download (82 MB)</p>
-						<p><b>Lite version:</b></p>
-						<p>Contains no furniture. New furniture will be downloaded if the file doesn't exist.</p>
-						<p> - <a href="https://classichabbo.com/classichabbo_exe_lite.zip">Click here</a> to download (25 MB)</p>
+						<p style="margin-top:10px; margin-right:10px">At this time there is just one version of the portable client which can be used across Windows, Linux, & macOS.</p>
+						<p><b>Portable Desktop Client:</b></p>
+						<p>The download includes the Habbo Shockwave client files, furni & sound files, and the necessary Director Xtras required to function.</p>
+						<p> - <a href="https://inf-o-matic.com/downloads/habbo-client-v0.1.0.zip"">Click here</a> to download (~170 MB)</p>
+						<p><b>Basilisk Portable Browser:</b></p>
+						<p>For those who possibly don't want to use the desktop client but also don't want to install Shockwave.</p>
+						<p> - <a href="https://inf-o-matic.com/downloads/Basilisk-Portable.zip">Click here</a> to download (~220 MB)</p>
 					</div>
 				</div>
 			</div>
