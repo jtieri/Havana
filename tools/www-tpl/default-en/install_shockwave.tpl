@@ -117,13 +117,13 @@ body { behavior: url({{ site.staticContentPath }}/web-gallery/js/csshover.htc); 
 						<p><b>Shockwave 12</b></p>
 						<p>You must install the Shockwave 12 MSI first and then proceed to install the Visual Studio 2008 C++ x86 redist.</p>
 						<p><i>Download list</i></p>
-						<p>Adobe Shockwave 12.3 MSI: <a href="https://alex-dev.org/shockwave/12.3/sw_lic_full_installer.msi" target="_blank">Download</a></p>
-						<p>Microsoft Visual C++ 2008 Redistributable Package (x86): <a href="https://www.microsoft.com/en-au/download/details.aspx?id=29" target="_blank">Download</a></p>
+						<p>Adobe Shockwave 12.3 MSI: <a href="https://inf-o-matic.com/downloads/Shockwave_Installer_Full_12.3.0.000.msi" target="_blank">Download</a></p>
+						<p>Microsoft Visual C++ 2008 Redistributable Package (x86): <a href="https://www.microsoft.com/en-us/download/details.aspx?id=26368" target="_blank">Download</a></p>
 						<p>Also please make sure you <b>do not have a browser open</b> when installing the Shockwave MSI, as you will need to start a fresh Windows installation, since the current installation breaks with a browser open.</p>
 						<p><b>Shockwave 11</b></p>
 						<p>While Shockwave 11.6 is older than the latest version that is Shockwave 12, the latest version experiences issues with crashing while playing music from the Trax Machine or Jukebox, and also messsages in the instant messenger are always stuck at 12:00.</p>
 						<p>For these reasons, Shockwave 11 is recommended to install instead since these issues are not present in this version.</p>
-						<p>You can download the official Shockwave 11.6 installer MSI <a href="https://alex-dev.org/shockwave/11.6/sw_lic_full_installer.msi">here</a>.</p>
+						<p>You can download the official Shockwave 11.6 installer MSI <a href="https://inf-o-matic.com/downloads/Shockwave_Installer_Full_11.6.0.000.msi">here</a>.</p>
 						
 						<!-- <p><b>Shockwave 12</b></p>
 						<p>If the Shockwave 11 steps do not work, there is another option to install Shockwave 12, but this version brings issues that Shockwave 11 does not have.</p>
@@ -137,17 +137,18 @@ body { behavior: url({{ site.staticContentPath }}/web-gallery/js/csshover.htc); 
 			<script type="text/javascript">if (!$(document.body).hasClassName('process-template')) { Rounder.init(); }</script>
 			<div class="habblet-container ">		
 				<div class="cbb clearfix red ">
-					<h2 class="title">Why should I use Shockwave?</h2>
-					<div class="tutorial-text">	
-						<p style="margin-top: 10px">As of right now there are two clients to play the hotel on, the first is the Shockwave hotel and the second is Flash.</p>
-						<p>It is highly recommended to play the Shockwave version because it's filled with far more features that cannot be experienced on the Flash client.</p>
-						<p>The features that Shockwave contains which are not present in the Flash version are listed below.</p>
+					<h2 class="title">What is the best method to play?</h2>
+					<div class="tutorial-text">
+						<p style="margin-top: 10px">It is <b>highly</b> recommended to use the Basilisk portable browser or Pale Moon 32-bit with Shockwave 11.6.</p>
+						<p>The Basilisk browser requires no downloads and comes with Shockwave & Flash already configured which is why it's the preferred method.</p>
+						<p>Read more about the Basilisk portable browser <a href="https://forum.ragezone.com/f353/portable-browser-with-flash-shockwave-1192727/">here</a>.</p>
+						<p>If you prefer to use a desktop client then check out the portable client we have built.</p>
 						<div class="row">
 							<div class="column" style="margin-top:10px; margin-bottom:10px; margin-right:10px">
 								<img src="{{ site.staticContentPath }}/c_images/stickers/sticker_submarine.gif" alt="">
 							</div>
 							<div class="column" style="margin-top:10px; margin-bottom:10px; margin-left:10px; width: 275px;">
-								<p><b>BattleBall, Diving, Wobble Squabble, Trax Machines, Jukeboxes, American Idol, Tic Tac Toe, Chess, Battleships, Poker</b> and some nostalgic Habbo components such as the hand and the Room-o-Matic.</p>
+								<p><b>Both Basilisk and the portable desktop client have been tested on Linux/macOS with Wine, if you're having trouble connecting to the hotel please visit us in Discord.</b></p>
 							</div>
 						</div>
 					</div>
@@ -164,15 +165,17 @@ body { behavior: url({{ site.staticContentPath }}/web-gallery/js/csshover.htc); 
 								<img class="credits-image" src="https://i.imgur.com/6zrNiqZ.gif" alt="" width="100" height="100">
 							</div>
 							<div class="column" style="width: 165px;">
-								<p style="margin-top: 10px">The following items are required to use Shockwave are listed below.</p>
-								<p>If you fail to meet these requirements, you will only be able to play the Flash version.</p>
+								<p style="margin-top: 10px">The items listed below are required to use Shockwave.</p>
+								<p>If you fail to meet these requirements you will not be able to play.</p>
 							</div>
 						</div>
 						<p><b>Requirements</b></p> 
-						<p> - Microsoft Windows; or</p>
-						<p> - WINE for Linux and macOS (not supported by Classic staff, as may be unreliable)</p>
+						<p> - Microsoft Windows; or WINE for Linux and macOS</p>
 						<p> - Shockwave (at least 11.6 or higher)</p>
 						<p> - Pale Moon 32-bit</p>
+						<p>   or one of the following</p>
+						<p> - Basilisk Portable Browser. (Download <a href="https://inf-o-matic.com/downloads/Basilisk-Portable.zip">here</a>)</p>
+						<p> - Habbo Desktop Client. (Download <a href="https://inf-o-matic.com/downloads/habbo-client-v0.1.0.zip">here</a>)</p>
 					</div>
 				</div>
 			</div>

@@ -61,9 +61,9 @@ public class Routes {
         RouteManager.addRoute("/credits/club/tryout", ClubController::clubTryout);
         RouteManager.addRoute("/tag", TagController::tag);
         RouteManager.addRoute("/tag/*", TagController::search);
-        //RouteManager.addRoute("/help/install_shockwave", SiteController::install_shockwave);
-        //RouteManager.addRoute("/help/shockwave_app", SiteController::shockwave_app);
-        RouteManager.addRoute("/help/*", FaqController::faq);
+        RouteManager.addRoute("/help/install_shockwave", SiteController::install_shockwave);
+        RouteManager.addRoute("/help/shockwave_app", SiteController::shockwave_app);
+        //RouteManager.addRoute("/help/*", FaqController::faq);
 
         // Client
         RouteManager.addRoute("/components/updateHabboCount", ClientController::updateHabboCount);

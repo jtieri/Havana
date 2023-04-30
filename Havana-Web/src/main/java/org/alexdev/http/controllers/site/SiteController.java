@@ -16,4 +16,18 @@ public class SiteController {
         template.render();
     }
 
+    public static void install_shockwave(WebConnection webConnection) {
+        XSSUtil.clear(webConnection);
+
+        var template = webConnection.template("install_shockwave");
+        template.render();
+    }
+
+    public static void shockwave_app(WebConnection webConnection) {
+        XSSUtil.clear(webConnection);
+
+        var template = webConnection.template("shockwave_app");
+        template.render();
+    }
 }
+
