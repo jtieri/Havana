@@ -80,6 +80,7 @@ public class CommandManager {
         tempCommands.put(new String[] { "resetpw" }, new RecoverAccountCommand());
         tempCommands.put(new String[] { "unacceptable" }, new UnacceptableCommand());
         tempCommands.put(new String[] { "giftroom" }, new GiftRoomCommand());
+        tempCommands.put(new String[] { "nextrare" }, new NextRareCommand());
 
         // Moderation
         tempCommands.put(new String[] { "dc", "disconnect" }, new DisconnectUserCommand());
