@@ -80,18 +80,20 @@ public class RECYCLE_ITEMS implements MessageEvent {
             return;
         }*/
 
-        double clubCreditChance = 0.2;
-        double normalCreditChance = 0.1;
+        // This is the random chance event code, temporarily disabled until percentages are formalized
+        /*
+        double clubCreditChance = 0.1;
+        double normalCreditChance = 0.05;
 
         boolean rewardCredits = false;
 
         if (player.getDetails().hasClubSubscription()) {
-            // if player is habbo club 20% chance they will earn credits.
+            // if player is habbo club 10% chance they will earn credits.
             if (Math.random() <= clubCreditChance) {
                 rewardCredits = true;
             }
         } else {
-            // if normal player then 10% chance they will earn credits.
+            // if normal player then 5% chance they will earn credits.
             if (Math.random() <= normalCreditChance) {
                 rewardCredits = true;
             }
@@ -116,6 +118,8 @@ public class RECYCLE_ITEMS implements MessageEvent {
             player.send(new RECYCLER_STATUS(1));
             return;
         }
+
+         */
 
         Item present = new Item();
         present.setDefinitionId(ItemManager.getInstance().getDefinitionBySprite("ecotron_box").getId());
