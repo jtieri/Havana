@@ -25,9 +25,19 @@ public class ADDSTRIPITEM implements MessageEvent {
         //String content = reader.contents();
         //String[] data = content.split(" ");
 
-        reader.readInt();
-
-        int itemId = reader.readInt();//Integer.parseInt(data[2]);
+        // this is a hack to handle the client side error when trying to use the ctrl + click shortcut
+        // the v31 client doesn't appear to encode the data properly, so you get a packet that look like this
+        // ACnew stuff 7696
+        // we try to detect the unencoded strings and then manually grab the item ID.
+        int itemId;
+        String messageBody = reader.getMessageBody();
+        if (messageBody.contains("new")) {
+            String[] parts = messageBody.split("stuff");
+            itemId = Integer.parseInt(parts[1].stripLeading().stripTrailing());
+        } else {
+            reader.readInt();
+            itemId = reader.readInt();//Integer.parseInt(data[2]);
+        }
 
         Item item = room.getItemManager().getById(itemId);
 
